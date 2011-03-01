@@ -1,0 +1,31 @@
+TextMate integration
+BASH prompt
+git init
+git add 
+git status
+git mv
+git rm
+git diff
+git stash
+git stash apply
+git commit
+git commit --amend
+git log
+git log filename
+git log revision
+git log since="2 days"
+git show revision
+git blame
+git checkout revision
+git checkout -b
+git branch
+git rebase -i
+git rebase
+git merge
+git branch -d
+git help
+
+https://github.com/AlexZeitler/gitcheatsheet
+
+
+
