@@ -1,3 +1,4 @@
+TextMate bundle
 TextMate integration
 BASH prompt
 git init
