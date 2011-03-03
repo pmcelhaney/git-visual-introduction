@@ -1,3 +1,36 @@
+Intro
+-----
+Imagine you're working on a project with a bunch of people. Code is constantly changing,
+things get overwritten, defects and regressions are introduced, etc. Hard to imagine, 
+right? 
+
+Someone has the bright idea that we should have a database in which we record all
+changes: what changed, when, why, and by whom.
+
+
+Say you're working on a team in which several people need to edit the same CSS and JS
+files. That works fine while as long as the team is smaller than two people. But as the
+team grows, it gets harder not to overwrite each others changes.
+
+So the team decides to institute some ground rules. A change log is added to the top of
+the file. 
+
+Why do we even need source control? Why can't we just put a change log at the top of
+the file? 
+
+As Ilya (?) pointed out, many if not most changes involve more than one file. So we 
+would really want our change log to be a separate file that notes what files change,
+who changed them, when, and why. In fact, we should take that file, copy it to a 
+directory that also contains copies of the changed files, zip it up, and email it
+out to the whole team.
+
+Each team member, when he gets a chance, can unzip and copy each of the new files to
+his local copy of the code.
+
+ 
+
+
+
 TextMate bundle
 TextMate integration
 BASH prompt
