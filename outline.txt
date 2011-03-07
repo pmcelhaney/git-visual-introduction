@@ -64,6 +64,7 @@ git rebase -i
 git rebase
 git merge
 git branch -d
+git tag
 git help
 
 https://github.com/AlexZeitler/gitcheatsheet
