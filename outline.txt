@@ -27,10 +27,17 @@ out to the whole team.
 Each team member, when he gets a chance, can unzip and copy each of the new files to
 his local copy of the code.
 
- 
 
 
+Each commit knows:
 
+- Who changed the code
+- What files changed
+- Where the previous/parent commit is
+- When the changes were committed
+- Why (commit message)
+
+git config (name and email)
 TextMate bundle
 TextMate integration
 BASH prompt
