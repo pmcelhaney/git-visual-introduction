@@ -4,43 +4,7 @@
 <head>
 	<title>Git Presentation</title>
 	<script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-	<script type="text/javascript" charset="utf-8">
-		var frames = [
-			{
-				next: function () { 
-					$('body').append('<h1>Hello World</h1>');
-				},
-				prev: function () {
-					$('h1').remove();
-				}
-			}, 
-			
-			{	
-				next: function () {
-					$('h1').text('Goodbye World');
-				}, 
-				prev: function () {
-					$('h1').text('Hello World');
-				}
-			}
-		];
-		
-		$(function () {
-			var i = 0;
-			
-			$('body').bind('keyup.presentation', function (e) {
-				if(e.which === 32 && i < frames.length) {
-					frames[i++].next();
-				} 
-				
-				if(e.which === 37 && i > 0) {
-				   i--;
-				   frames[i].prev && frames[i].prev();
-				}
-			});
-			
-		});
-	</script>
+	<script src="framed.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
 
