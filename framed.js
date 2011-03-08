@@ -8,7 +8,11 @@ var GRID_START_X = 75;
 var paper;	
 	
 var drawHouse = function (col, row) {
-	return paper.rect(GRID_START_X + col * GRID_WIDTH, 100, HOUSE_WIDTH, HOUSE_WIDTH);
+	var house = paper.set();
+	house.push( paper.rect(10, 30, 60, 60));
+	house.push( paper.path( ['M40 0', 'L0 30', 'L80 30', 'L40 0'].join("") ) );
+	house.translate(GRID_START_X + col * GRID_WIDTH, 100);
+	
 };
 	
 var frames = [
@@ -24,6 +28,9 @@ var frames = [
 	{
 		next: function () {
 			this.house = drawHouse(1, 1);
+			this.house = drawHouse(2, 1);
+			this.house = drawHouse(3, 1);
+			this.house = drawHouse(4, 1);
 		},
 		prev: function () {
 			
