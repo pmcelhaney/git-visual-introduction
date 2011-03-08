@@ -27,7 +27,10 @@ var SHAPES = {
 	chimney: function () {}
 	
 };
-	
+
+
+var frameIndex = 0;
+
 var paper;	
 	
 var drawHouse = function (col, row, features) {
@@ -61,7 +64,7 @@ var frames = [
 			this.house = drawHouse(0, 0, 'walls');
 		},
 		prev: function () {
-			
+			this.house.remove();
 		}
 	},
 	
@@ -71,7 +74,8 @@ var frames = [
 			this.house = drawHouse(1, 0, 'walls roof');
 		},
 		prev: function () {
-			
+			this.arrow.remove();
+			this.house.remove();
 		}
 	},
 	
@@ -82,7 +86,8 @@ var frames = [
 	
 		},
 		prev: function () {
-			
+			this.arrow.remove();
+			this.house.remove();
 		}
 	},
 
@@ -93,7 +98,8 @@ var frames = [
 
 		},
 		prev: function () {
-
+			this.arrow.remove();
+			this.house.remove();	
 		}
 	},
 
@@ -104,7 +110,8 @@ var frames = [
 
 		},
 		prev: function () {
-
+			this.arrow.remove();
+			this.house.remove();
 		}
 	},
 	
@@ -115,7 +122,8 @@ var frames = [
 
 		},
 		prev: function () {
-
+			this.arrow.remove();
+			this.house.remove();
 		}
 	},
 	
@@ -126,7 +134,8 @@ var frames = [
 
 		},
 		prev: function () {
-
+			this.arrow.remove();
+			this.house.remove();
 		}
 	},
 	
@@ -137,7 +146,8 @@ var frames = [
 
 		},
 		prev: function () {
-
+			this.arrow.remove();
+			this.house.remove();
 		}
 	}
 ];
@@ -145,21 +155,23 @@ var frames = [
 $(function () {
     paper = Raphael("canvas", 800, 600);
 	
-	var i = 0;
-	
+
 	$('body').bind('keypress.presentation', function (e) {
 		
-		
-		if(e.which === 39 || e.which === 32 && i < frames.length) {
-			frames[i++].next();
+
+	
+		if(e.which === 39 || e.which === 32) {
+			frames[frameIndex++].next();
 			e.preventDefault();	
 		} 
 		
-		if(e.which === 37 && i > 0) {
-		   i--;
-		   frames[i].prev && frames[i].prev();
+		if( (e.which === 37 || e.which === 98) && frameIndex > 0) {
+		   
+		   frameIndex--;
+		   frames[frameIndex].prev && frames[frameIndex].prev();
 		};
 		
+	
 		
 	});
 	
