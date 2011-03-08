@@ -17,7 +17,7 @@ var drawHouse = function (col, row) {
 
 var drawArrow = function (col, row) {
 	var arrow = paper.path( ['M0 5', 'L40 5', 'L35 0', 'M35 10', 'L40 5'].join("") ).translate(0, 50);
-	arrow.translate( GRID_START_X + 90 + col * GRID_WIDTH, 100 );
+	arrow.translate( GRID_START_X - 50 + col * GRID_WIDTH, 100 );
 };
 
 
@@ -26,7 +26,6 @@ var frames = [
 	{
 		next: function () {
 			this.house = drawHouse(0, 0);
-			drawArrow(0, 0);
 		},
 		prev: function () {
 			
@@ -35,6 +34,7 @@ var frames = [
 	
 	{
 		next: function () {
+			drawArrow(1, 0);
 			this.house = drawHouse(1, 1);
 			this.house = drawHouse(2, 1);
 			this.house = drawHouse(3, 1);
