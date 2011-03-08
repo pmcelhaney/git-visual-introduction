@@ -7,8 +7,9 @@ var GRID_START_X = 75;
 
 var SHAPES = {
 	walls: function () { return paper.rect(10, 30, 60, 60); },
-	roof: function () { return paper.path( ['M40 0', 'L0 30', 'L80 30', 'L40 0'].join("") ); }
-	
+	roof: function () { return paper.path( ['M40 0', 'L0 30', 'L80 30', 'L40 0'].join("") ); },
+	door: function () { return paper.rect(20, 60, 15, 30).attr('fill', '#ddd'); },
+	siding: function () { return paper.path( ['M10 40', 'L70 40', 'M10 50', 'L70 50', 'M10 60', 'L70 60', 'M10 70', 'L70 70', 'M10 80', 'L70 80'].join("") ).attr('stroke-width', 0.5); }
 };
 	
 var paper;	
@@ -54,7 +55,7 @@ var frames = [
 	{
 		next: function () {
 			this.arrow = drawArrow(2, 0);
-			this.house = drawHouse(2, 1, 'walls roof');
+			this.house = drawHouse(2, 1, 'walls roof siding door');
 	
 		},
 		prev: function () {
