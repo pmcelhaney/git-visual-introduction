@@ -3,19 +3,18 @@
 var HOUSE_WIDTH = 80;
 var GRID_WIDTH = 700/5;
 var GRID_START_X = 75;	
-var MASTER_Y = 100;
+
 	
 var paper;	
+	
+var drawHouse = function (col, row) {
+	return paper.rect(GRID_START_X + col * GRID_WIDTH, 100, HOUSE_WIDTH, HOUSE_WIDTH);
+};
 	
 var frames = [
 	{
 		next: function () {
-			var i = 0;
-			this.walls = paper.rect(GRID_START_X + GRID_WIDTH * i++, MASTER_Y, HOUSE_WIDTH, HOUSE_WIDTH);
-			paper.rect(GRID_START_X + GRID_WIDTH * i++, MASTER_Y, HOUSE_WIDTH, HOUSE_WIDTH);
-			paper.rect(GRID_START_X + GRID_WIDTH * i++, MASTER_Y, HOUSE_WIDTH, HOUSE_WIDTH);
-			paper.rect(GRID_START_X + GRID_WIDTH * i++, MASTER_Y, HOUSE_WIDTH, HOUSE_WIDTH);
-			paper.rect(GRID_START_X + GRID_WIDTH * i++, MASTER_Y, HOUSE_WIDTH, HOUSE_WIDTH);
+			this.house = drawHouse(0, 0);
 		},
 		prev: function () {
 			
@@ -24,7 +23,7 @@ var frames = [
 	
 	{
 		next: function () {
-			this.walls = paper.rect(220, 100, 100, 100);
+			this.house = drawHouse(1, 1);
 		},
 		prev: function () {
 			
