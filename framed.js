@@ -43,6 +43,14 @@ var frameIndex = 0;
 var paper;	
 var arrows = [];
 	
+var drawBranch = function (name, row) {
+	var branch = paper.set();
+	branch.push( paper.text(15.5, 25.5, name).attr( { 'font-size': '24pt', 'text-anchor': 'start', 'fill': '#888' } ) );
+	branch.push( paper.rect(10.5, 10.5, 780, 125, 5).attr( { 'stroke-dasharray': '- ', 'stroke': '#888' } ) );
+	branch.translate(0, row * 140);
+	return branch;
+};	
+	
 var drawHouse = function (col, row, features) {
 	var features = (typeof features === "string") ? features.split(" ") : features + "x";
 	var house = paper.set();
@@ -112,8 +120,29 @@ var frames = [
 			
 		},
 		prev: function () {
-			this.arrow.remove();
-			this.house.remove();
+			$(arrows).each( function () {
+				this.animate({'rotation': -180}, 500);
+			});
+		}
+	},
+	
+	{
+		next: function () {
+			this.branch = drawBranch('master', 0);
+			
+		},
+		prev: function () {
+			this.branch.remove();
+		}
+	},
+	
+	{
+		next: function () {
+			this.branch = drawBranch('my-branch', 1);
+			
+		},
+		prev: function () {
+			this.branch.remove();
 		}
 	},
 
