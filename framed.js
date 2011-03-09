@@ -121,7 +121,7 @@ var frames = [
 		},
 		prev: function () {
 			$(arrows).each( function () {
-				this.animate({'rotation': -180}, 500);
+				this.animate({'rotation': 0}, 500);
 			});
 		}
 	},

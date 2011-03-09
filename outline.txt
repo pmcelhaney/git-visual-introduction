@@ -70,4 +70,32 @@ git help
 https://github.com/AlexZeitler/gitcheatsheet
 
 
+= blank rectangle
+
+- git init
+
+- "initialized empty repository..."
+
+= house 
+- (create a file called house.css)
+
+- git status
+- ? house.css
+! Talk about staging area.
+
+- git add house.css
+
+- "added 1 file" (or whatever it says)
+
+- git commit -m "First commit. The house has walls."
+
+! Now let's add a roof.
+= roof 
+- (editor)
+
+-git status
+-# modified: house.css
+
+
+
 
