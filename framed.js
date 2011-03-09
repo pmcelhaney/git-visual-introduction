@@ -22,7 +22,9 @@ var SHAPES = {
 		return paper.path( path.join("") ).attr('stroke-width', 0.5); 
 		
 	},
-	window: function () {},
+	window: function () {
+		return paper.rect(45, 40, 15, 15);
+	},
 	color: function () {},
 	chimney: function () {}
 	
