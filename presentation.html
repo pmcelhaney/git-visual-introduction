@@ -10,9 +10,32 @@
 		#canvas {
 			width: 800px;
 			height: 300px;
-			margin: auto;
+			margin: 20px auto;
 			background-color: #e8e8e8;
 			-webkit-border-radius: 10px;
+		}
+		
+		
+		#title-bar {
+			background-color: #ccc;
+			-webkit-border-top-left-radius: 5px;
+			-webkit-border-top-right-radius: 5px;
+			height: 20px;
+			width: 800px;
+			margin: 20px auto 0;
+		}
+		#terminal {
+			font-size: 18px;
+			padding: 10px;
+			width: 780px;
+			height: 300px;
+			margin: 0 auto;
+			background-color: black;
+			color: #eee;
+			overflow: scroll;
+			border: 1px solid auto;
+			font-family: monospace;
+			white-space: pre;
 		}
 	</style>
 </head>
@@ -22,5 +45,45 @@
 <div id="canvas"></div>
 
 
+<div id="title-bar"></div>
+<div id="terminal">
+~/www/git-demo (test-branch *)
+$ git status
+# On branch test-branch
+# Changed but not updated:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   outline.txt
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+
+~/www/git-demo (test-branch *)
+$ git checkout master
+error: Your local changes to the following files would be overwritten by checkout:
+	outline.txt
+Please, commit your changes or stash them before you can switch branches.
+Aborting
+
+~/www/git-demo (test-branch *)
+$ git status
+# On branch test-branch
+# Changed but not updated:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   outline.txt
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+
+~/www/git-demo (test-branch *)
+$ git commit -a -m "Finished outline/script"
+[test-branch c6d9e05] Finished outline/script
+ 1 files changed, 148 insertions(+), 4 deletions(-)
+
+~/www/git-demo (test-branch)
+$ <span style="background-color: #666">&nbsp;</span>
+
+</div>
 </body>
 </html>
