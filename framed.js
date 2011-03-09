@@ -48,13 +48,13 @@ var drawHouse = function (col, row, features) {
 	$(features).each(function (i, name) {
 		house.push( SHAPES[name]() );
 	});
-	house.translate( GRID_START_X + col * GRID_WIDTH + 0.5, 100.5 + row * 140 );
+	house.translate( GRID_START_X + col * GRID_WIDTH + 0.5, 20.5 + row * 140 );
 	return house;
 };
 
 var drawArrow = function (col, row) {
 	var arrow = paper.path( ['M0 5', 'L40 5', 'L35 0', 'M35 10', 'L40 5'].join("") ).translate(0, 50);
-	arrow.translate( GRID_START_X - 50.5 + col * GRID_WIDTH, 100.5 + row * 140 );
+	arrow.translate( GRID_START_X - 50.5 + col * GRID_WIDTH, 20.5 + row * 140 );
 	return arrow;
 };
 
