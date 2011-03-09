@@ -6,9 +6,9 @@ var GRID_START_X = 75;
 
 
 var SHAPES = {
-	walls: function () { return paper.rect(10, 30, 60, 60); },
-	roof: function () { return paper.path( ['M40 0', 'L0 30', 'L80 30', 'L40 0'].join("") ); },
-	door: function () { return paper.rect(21, 60, 16, 30).attr('fill', '#ddd'); },
+	walls: function () { return paper.rect(10, 30, 60, 60, 3).attr('fill', '90-#b2cde0-#a7bedd'); },
+	roof: function () { return paper.path( ['M40 0', 'L0 32', 'L80 32', 'L40 0'].join("") ).attr('fill', '90-#999-#555'); },
+	door: function () { return paper.rect(21, 60, 16, 30, 1).attr('fill', '#000').attr('stroke-width', 0.5); },
 	siding: function () { return paper.path( ['M10 38', 'L70 38', 'M10 46', 'L70 46', 'M10 54', 'L70 54', 'M10 62', 'L70 62', 'M10 70', 'L70 70', 'M10 78', 'L70 78', 'M10 86', 'L70 86'].join("") ).attr('stroke-width', 0.5); },
 	brick: function () { 
 		var x, y, xoffset = 10, path = [];
@@ -23,9 +23,13 @@ var SHAPES = {
 		
 	},
 	window: function () {
-		return paper.rect(45, 40, 15, 15);
+		return paper.rect(45, 40, 15, 15, 2).attr('fill', '90-#e8e8e8-#fff-#e8e8e8');
 	},
-	color: function () {},
+	color: function () {
+		
+		return paper.rect(21, 60, 16, 30, 2).attr('fill', '#64045e');
+		
+	},
 	chimney: function () {}
 	
 };
@@ -96,7 +100,7 @@ var frames = [
 	{
 		next: function () {
 			this.arrow = drawArrow(3, 0);
-			this.house = drawHouse(3, 0, 'walls roof siding door');
+			this.house = drawHouse(3, 0, 'walls siding door roof');
 
 		},
 		prev: function () {
@@ -108,7 +112,7 @@ var frames = [
 	{
 		next: function () {
 			this.arrow = drawArrow(4, 0);
-			this.house = drawHouse(4, 0, 'walls roof siding brick door');
+			this.house = drawHouse(4, 0, 'walls siding brick door roof');
 
 		},
 		prev: function () {
@@ -120,7 +124,7 @@ var frames = [
 	{
 		next: function () {
 			this.arrow = drawUpArrow();
-			this.house = drawHouse(2, 1, 'walls roof door window');
+			this.house = drawHouse(2, 1, 'walls door window roof');
 
 		},
 		prev: function () {
@@ -132,7 +136,7 @@ var frames = [
 	{
 		next: function () {
 			this.arrow = drawArrow(3, 1);
-			this.house = drawHouse(3, 1, 'walls roof door window color');
+			this.house = drawHouse(3, 1, 'walls door color window roof');
 
 		},
 		prev: function () {
@@ -144,7 +148,7 @@ var frames = [
 	{
 		next: function () {
 			this.arrow = drawArrow(4, 1);
-			this.house = drawHouse(4, 1, 'walls chimney roof color door window');
+			this.house = drawHouse(4, 1, 'walls door color window roof');
 
 		},
 		prev: function () {
