@@ -30,7 +30,10 @@ var SHAPES = {
 		return paper.rect(21, 60, 16, 30, 2).attr('fill', '#64045e');
 		
 	},
-	chimney: function () {}
+	chimney: function () {
+		return paper.path( ['M60 30', 'L60 3', 'L57 3', 'L57 0', 'L68 0', 'L68 3', 'L65 3', 'L65 30'].join(' ') ).attr( 'fill', '#333' );
+		
+	}
 	
 };
 
@@ -148,7 +151,7 @@ var frames = [
 	{
 		next: function () {
 			this.arrow = drawArrow(4, 1);
-			this.house = drawHouse(4, 1, 'walls door color window roof');
+			this.house = drawHouse(4, 1, 'walls door color window chimney roof');
 
 		},
 		prev: function () {
