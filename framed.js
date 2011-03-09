@@ -41,6 +41,7 @@ var SHAPES = {
 var frameIndex = 0;
 
 var paper;	
+var arrows = [];
 	
 var drawHouse = function (col, row, features) {
 	var features = (typeof features === "string") ? features.split(" ") : features + "x";
@@ -52,16 +53,20 @@ var drawHouse = function (col, row, features) {
 	return house;
 };
 
-var drawArrow = function (col, row) {
+var drawArrow = function (col, row, pointRight) {
 	var arrow = paper.path( ['M0 5', 'L40 5', 'L35 0', 'M35 10', 'L40 5'].join("") ).translate(0, 50);
 	arrow.translate( GRID_START_X - 50.5 + col * GRID_WIDTH, 20.5 + row * 140 );
+	if (!pointRight) {
+		arrow.rotate(180);
+	}
+	arrows.push(arrow);
 	return arrow;
 };
 
 var drawUpArrow = function () {
 	var arrow = paper.path( ['M0 5', 'L30 5', 'L25 0', 'M25 10', 'L30 5'].join("") ).translate(0, 50);
 	arrow.rotate(270);
-	arrow.translate( 380.5, 160.5 );
+	arrow.translate( 380.5, 80.5 );
 	return arrow;
 };
 
@@ -79,7 +84,7 @@ var frames = [
 	
 	{
 		next: function () {
-			this.arrow = drawArrow(1, 0);
+			this.arrow = drawArrow(1, 0, true);
 			this.house = drawHouse(1, 0, 'walls roof');
 		},
 		prev: function () {
@@ -90,33 +95,8 @@ var frames = [
 	
 	{
 		next: function () {
-			this.arrow = drawArrow(2, 0);
+			this.arrow = drawArrow(2, 0, true);
 			this.house = drawHouse(2, 0, 'walls roof door');
-	
-		},
-		prev: function () {
-			this.arrow.remove();
-			this.house.remove();
-		}
-	},
-
-	{
-		next: function () {
-			this.arrow = drawArrow(3, 0);
-			this.house = drawHouse(3, 0, 'walls siding door roof');
-
-		},
-		prev: function () {
-			this.arrow.remove();
-			this.house.remove();	
-		}
-	},
-
-	{
-		next: function () {
-			this.arrow = drawArrow(4, 0);
-			this.house = drawHouse(4, 0, 'walls siding brick door roof');
-
 		},
 		prev: function () {
 			this.arrow.remove();
@@ -124,6 +104,19 @@ var frames = [
 		}
 	},
 	
+	{
+		next: function () {
+			$(arrows).each( function () {
+				this.animate({'rotation': 180}, 500);
+			});
+			
+		},
+		prev: function () {
+			this.arrow.remove();
+			this.house.remove();
+		}
+	},
+
 	{
 		next: function () {
 			this.arrow = drawUpArrow();
@@ -152,6 +145,30 @@ var frames = [
 		next: function () {
 			this.arrow = drawArrow(4, 1);
 			this.house = drawHouse(4, 1, 'walls door color window chimney roof');
+
+		},
+		prev: function () {
+			this.arrow.remove();
+			this.house.remove();
+		}
+	},
+	
+	{
+		next: function () {
+			this.arrow = drawArrow(3, 0);
+			this.house = drawHouse(3, 0, 'walls siding door roof');
+
+		},
+		prev: function () {
+			this.arrow.remove();
+			this.house.remove();	
+		}
+	},
+
+	{
+		next: function () {
+			this.arrow = drawArrow(4, 0);
+			this.house = drawHouse(4, 0, 'walls siding brick door roof');
 
 		},
 		prev: function () {
