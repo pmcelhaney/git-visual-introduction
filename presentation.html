@@ -37,6 +37,22 @@
 			font-family: monospace;
 			white-space: pre;
 		}
+		
+		#terminal kbd:before {
+			content: "$ ";
+		}
+		
+		#terminal ins {
+			font-family: arial, helvetica, sans-serif;
+			font-style: italic;
+			text-decoration: none;
+			margin: 10px 0;
+			padding: 10px 0;
+			display: block;
+			border-top: 1px dashed white;
+			border-bottom: 1px dashed white;
+		}
+		
 	</style>
 </head>
 <body>
@@ -47,41 +63,155 @@
 
 <div id="title-bar"></div>
 <div id="terminal">
-~/www/git-demo (test-branch *)
-$ git status
-# On branch test-branch
-# Changed but not updated:
-#   (use "git add <file>..." to update what will be committed)
-#   (use "git checkout -- <file>..." to discard changes in working directory)
-#
-#	modified:   outline.txt
-#
-no changes added to commit (use "git add" and/or "git commit -a")
 
-~/www/git-demo (test-branch *)
-$ git checkout master
-error: Your local changes to the following files would be overwritten by checkout:
-	outline.txt
-Please, commit your changes or stash them before you can switch branches.
-Aborting
+<kbd id="git-init">git init</kbd>
+<samp id="git-init-output">initialized empty repository...</samp>	
 
-~/www/git-demo (test-branch *)
-$ git status
-# On branch test-branch
-# Changed but not updated:
-#   (use "git add <file>..." to update what will be committed)
-#   (use "git checkout -- <file>..." to discard changes in working directory)
-#
-#	modified:   outline.txt
-#
-no changes added to commit (use "git add" and/or "git commit -a")
+<ins id="edit-create-house-css">(create a file called house.css)</ins>
 
-~/www/git-demo (test-branch *)
-$ git commit -a -m "Finished outline/script"
-[test-branch c6d9e05] Finished outline/script
- 1 files changed, 148 insertions(+), 4 deletions(-)
+<kbd id="git-status">git status</kbd>
 
-~/www/git-demo (test-branch)
+<samp>(output of git status)</samp>
+
+
+<kbd>git add house.css</kbd>
+
+<samp>1 files changed, 12 insertions(+)</samp>
+
+<kbd>git commit -m "First commit. The house has walls."</kbd>
+<samp>(output of first commit)</samp>
+
+<ins>(write code for the roof)</ins>
+
+<kbd>git status</kbd>
+
+<samp># modified: house.css, etc.</samp>
+
+<samp>git add house.css</samp>
+
+<kbd>git commit -m "Added a roof"</kbd>
+
+<samp>1 files changed, 28 insertions(+), 2 deltions (-)</samp>
+
+	
+<ins>(create door.css, edit house.css to @import door.css)</ins>
+
+<kbd>git commit -a -m "Added a door"</kbd>
+
+<samp>(output of commit)</samp>
+
+<kbd>git log</kbd> 
+
+<samp>commit 01262438d7407ac62156a74e7e714596be53b132
+Author: Patrick McElhaney <patrick.mcelhaney@ally.com>
+Date:   Wed Mar 9 10:58:50 2011 -0500
+
+  Adjusted size of the box to be just big enough to frame the houses.
+
+commit 6e3500e16e100c952aec9d2701ff51bd4919666e
+Author: Patrick McElhaney <patrick.mcelhaney@ally.com>
+Date:   Wed Mar 9 10:56:26 2011 -0500
+
+   Add a roof.
+
+commit 6257eb4b17ac63153e3e6bccb1c43107dbea9e19
+Author: Patrick McElhaney <patrick.mcelhaney@ally.com>
+Date:   Wed Mar 9 10:51:20 2011 -0500
+  
+   First commit. The house has walls.</samp>
+
+
+	! We switch to a new branch.
+	= my-branch
+	- git checkout -b my-branch
+	- Switched to a new branch 'my-branch'
+
+	! Now let's add some code on this branch and commit it.
+	- git commit -a -m "Added a window"
+
+	! Let's give it some color.
+	- git commit -a 
+
+	! What did I do wrong? I forgot the commit message.
+	! If you don't type a commit message, an editor will pop up so you can type it.
+	- (screenshot of TextMate)
+
+	! When you're done, just close the editor.
+	- (output of commit)
+
+	! One last commit on this branch
+	= chimney
+	- git commit -a -m "I've always wanted a real fireplace."
+	- result of git commit
+
+	! Now let's check out the master branch again.
+	- git checkout master
+	- (output of checkout)
+
+	! We need to add vinyl siding.
+	= siding
+	- git commit -a -m "Added siding"
+	- output of commit
+
+	! Actually, make that brick
+	= brick
+	- git commit -a -m "Changed siding to brick"
+	- output of commit
+
+	! Now, if we look at the log, we'll only see changes that are on master
+	- git log
+	- (ouptut of log)
+
+	! We're ready to land the window, etc., on the master branch. To do that,
+	! we'll first switch back to the branch.
+	- git checkout my-branch
+	- (output of git checkout branch)
+
+	! Now, we rebase the branch onto master. That means we take all of these
+	! changes and pretend like they happened after the last change on master.
+	= move arrow to point back
+	- git rebase master
+
+	= change so that bricks are pushed into the new branch
+	- (output of git rebase)
+
+	! Now all of the commits are in one continuous line. We can merge onto 
+	! master and it will be a fast-forward merge. That's a good thing!
+	! First we check out master.
+	- git checkout master
+	- (output of master)
+
+	! Then we merge my-branch onto master
+	- git merge my-branch
+	- (output of merge)
+	= changes copied up into master
+
+	! Now we can delete the branch
+	- git branch -d my-branch
+
+	= branch is removed
+	- (output of delete)
+
+	! Some more things I didn't cover:
+	! - show
+	! - git checkout <commit>
+	! - git checkout HEAD^ 
+	! - git checkout HEAD~1
+	! - git log HEAD~5
+	! - git log origin/master
+	! - git log since="2 days"
+	! - git log HEAD~20..HEAD^^
+	! - git blame
+	! - git blame | mate
+	! - git tag
+	! - git rebase -i
+	! - git stash
+	! - git stash apply
+	! - git show <revision>
+	! - git help
+
+
+
 $ <span style="background-color: #666">&nbsp;</span>
 
 </div>
