@@ -45,11 +45,12 @@
 			font-family: arial, helvetica, sans-serif;
 			font-style: italic;
 			text-decoration: none;
-			margin: 10px 0;
-			padding: 10px 0;
+			margin: 10px;
+			padding: 10px;
 			display: block;
-			border-top: 1px dashed white;
-			border-bottom: 1px dashed white;
+			border: 1px solid white;
+			background-color: white;
+			color: black;
 		}
 		
 		#terminal kbd, #terminal samp, #terminal ins {
@@ -59,6 +60,9 @@
 			margin: 1em 0 0 0;
 		}
 		
+		#terminal samp {
+			color: #b8cdde;
+		}
 	
 		
 	</style>
@@ -79,54 +83,75 @@
 
 <kbd id="git-status">git status</kbd>
 
-<samp>(output of git status)</samp>
+<samp># On branch master
+#
+# Initial commit
+#
+# Untracked files:
+#   (use "git add &lt;file&gt;..." to include in what will be committed)
+#
+#	house.css
+nothing added to commit but untracked files present (use "git add" to track)</samp>
 
 
 <kbd>git add house.css</kbd>
 
-<samp>1 files changed, 12 insertions(+)</samp>
+<samp></samp>
 
 <kbd>git commit -m "First commit. The house has walls."</kbd>
-<samp>(output of first commit)</samp>
+<samp>[master (root-commit) 71f2aac] First commit. The house has walls.
+ 1 files changed, 2 insertions(+), 0 deletions(-)
+ create mode 100644 house.css
+</samp>
 
 <ins>(write code for the roof)</ins>
 
 <kbd>git status</kbd>
 
-<samp># modified: house.css, etc.</samp>
+<samp># On branch master
+# On branch master
+# Changed but not updated:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   house.css</samp>
 
-<samp>git add house.css</samp>
+<kbd>git add house.css roof.css</kbd>
 
 <kbd>git commit -m "Added a roof"</kbd>
 
-<samp>1 files changed, 28 insertions(+), 2 deltions (-)</samp>
+<samp>[master 71f2aacb] Added a roof
+ 1 files changed, 22 insertions(+), 1 deletions(-)</samp>
 
 	
 <ins>(create door.css, edit house.css to @import door.css)</ins>
 
 <kbd>git commit -a -m "Added a door"</kbd>
 
-<samp>(output of commit)</samp>
+<samp>[master a0663e2] Added a door
+ 2 files changed, 7 insertions(+), 1 deletions(-)
+ create mode 100644 door.css</samp>
 
 <kbd>git log</kbd> 
 
-<samp>commit 01262438d7407ac62156a74e7e714596be53b132
+<samp>commit a0663e20c58829d4d5b490c1e29b0e8099abc34b
 Author: Patrick McElhaney <patrick.mcelhaney@ally.com>
-Date:   Wed Mar 9 10:58:50 2011 -0500
+Date:   Thu Mar 10 16:22:26 2011 -0500
 
-  Adjusted size of the box to be just big enough to frame the houses.
+    Added a door
 
-commit 6e3500e16e100c952aec9d2701ff51bd4919666e
+commit 0f5420eb6cc6a7f5ee75ef0aedcd6f4825ed1223
 Author: Patrick McElhaney <patrick.mcelhaney@ally.com>
-Date:   Wed Mar 9 10:56:26 2011 -0500
+Date:   Thu Mar 10 16:18:52 2011 -0500
 
-   Add a roof.
+    Added a roof
 
-commit 6257eb4b17ac63153e3e6bccb1c43107dbea9e19
+commit 71f2aacb231eaf4a0c35b5fbfac0862936aa4206
 Author: Patrick McElhaney <patrick.mcelhaney@ally.com>
-Date:   Wed Mar 9 10:51:20 2011 -0500
-  
-   First commit. The house has walls.</samp>
+Date:   Thu Mar 10 16:12:50 2011 -0500
+
+    First commit. The house has walls.
+</samp>
 
 
 <kbd>git checkout -b my-branch</kbd>
@@ -135,57 +160,104 @@ Date:   Wed Mar 9 10:51:20 2011 -0500
 
 <kbd>git commit -a -m "Added a window"</kbd>
 
-<samp>(output of commit)</samp>
+<samp>[my-branch 298bd17] Added a window
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+</samp>
 
 <kbd>git commit -a</kbd>
 
-<ins>(screenshot of TextMate)</ins>
+<ins><h3>(opens your favorite editor)</h3>
+	
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch my-branch
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	modified:   house.css
+#</ins>
 
-<samp>(output of commit)</samp>
+<samp>[my-branch d6c3476] A splash of paint on the door.
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+</samp>
 
 <kbd>git commit -a -m "I've always wanted a real fireplace."</kbd>
-<samp>result of git commit</samp>
+<samp>[my-branch 07b14dd] I've always wanted a real fireplace.
+ 2 files changed, 7 insertions(+), 0 deletions(-)
+</samp>
 
 <kbd>git checkout master</kbd>
-<samp>(output of checkout)</samp>
+<samp>Switched to branch 'master'</samp>
 
 <kbd>git commit -a -m "Added siding"</kbd>
-<samp>output of commit</samp>
+<samp>[master 4c93a6a] Added siding
+ 2 files changed, 4 insertions(+), 0 deletions(-)</samp>
 
-<kbd>git commit -a -m "Changed siding to brick"</kbd>
-<samp>output of commit</samp>
+<kbd>git commit -a -m "On second thought, let's make it brick"</kbd>
+<samp>[master 147c7c2] On second thought, let's make it brick
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+</samp>
 
 
 <kbd>git log</kbd>
-<samp>(output of log)</samp>
+<samp>commit 147c7c2ff743cb8f99d017c723e6a29fb1b3b8d7
+Author: Patrick McElhaney <patrick.mcelhaney@ally.com>
+Date:   Thu Mar 10 16:31:04 2011 -0500
+
+    On second thought, let's make it brick
+
+commit 4c93a6a3cfcb518f7f6d7d19d5ec9de805ef8364
+Author: Patrick McElhaney <patrick.mcelhaney@ally.com>
+Date:   Thu Mar 10 16:30:32 2011 -0500
+
+    Added siding
+
+commit a0663e20c58829d4d5b490c1e29b0e8099abc34b
+Author: Patrick McElhaney <patrick.mcelhaney@ally.com>
+Date:   Thu Mar 10 16:22:26 2011 -0500
+
+    Added a door
+
+commit 0f5420eb6cc6a7f5ee75ef0aedcd6f4825ed1223
+Author: Patrick McElhaney <patrick.mcelhaney@ally.com>
+Date:   Thu Mar 10 16:18:52 2011 -0500
+
+    Added a roof</samp>
 
 
 <kbd>git checkout my-branch</kbd>
-<samp>(output of git checkout branch)</samp>
+<samp>Switched to branch 'my-branch'</samp>
 
 <kbd>git rebase master</kbd>
-<samp>output of git rebase master</samp>
+<samp>First, rewinding head to replay your work on top of it...
+Applying: Added a window
+Applying: A splash of paint on the door.
+Applying: I've always wanted a real fireplace.
+</samp>
 
 
 <kbd>git checkout master</kbd>
-<samp>output of git checkout master</samp>
+<samp>Switched to branch 'my-branch</samp>
 
 <kbd>git merge my-branch</kbd>
-<samp>(output of merge)</samp>
+<samp>Fast-forward
+ house.css |    2 ++
+ 1 files changed, 2 insertions(+), 0 deletions(-)
+</samp>
 
 
-<kbd>- git branch -d my-branch</kbd>
-<samp>(output of delete)</samp>
+<kbd>git branch -d my-branch</kbd>
+<samp>Deleted branch my-branch (was 05d9b14).</samp>
 
 <kbd>git show</kbd>
 <kbd>git checkout d2e31a914028ad734f957d88a92945a6b5d0c0d0</kbd>
 <kbd>git checkout d2e31a</kbd>
 <kbd>git checkout HEAD^ </kbd>
 <kbd>git checkout HEAD~1</kbd>
-<kbd>git log HEAD~5</kbd>
-<kbd>git log origin/master</kbd>
-<kbd>git log since="2 days"</kbd>
+<kbd>git log d2e31a..945a6b5</kbd>
 <kbd>git log HEAD~20..HEAD^^</kbd>
+<kbd>git log since="2 days"</kbd>
+<kbd>git whatchanged d2e31a..HEAD</kbd>
 <kbd>git blame</kbd>
 <kbd>git blame | mate</kbd>
 <kbd>git tag</kbd>
