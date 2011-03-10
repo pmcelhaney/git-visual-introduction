@@ -82,8 +82,8 @@ var drawUpArrow = function () {
 
 var terminalFrame = {
 	next: function () {
-	    var obj = $('#terminal *:hidden:first').css('display', 'block');
-		$('#terminal').scrollTop(obj.position().top);
+		$('#terminal *:hidden:first').css('display', 'block');
+		$('#terminal').scrollTop( $('#terminal')[0].scrollHeight );
 	},
 	prev: function () {
 		$('#terminal *:visible:last').css('display', 'none');
@@ -130,6 +130,12 @@ var frames = [
 		}
 	},
 	
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	
+	
+	
 	{
 		next: function () {
 			this.arrow = drawArrow(2, 0, true);
@@ -140,6 +146,13 @@ var frames = [
 			this.house.remove();
 		}
 	},
+
+
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+
+
 	
 	{
 		next: function () {
@@ -154,6 +167,8 @@ var frames = [
 			});
 		}
 	},
+
+	terminalFrame,
 	
 	{
 		next: function () {
@@ -165,6 +180,10 @@ var frames = [
 		}
 	},
 	
+	terminalFrame,
+	terminalFrame,
+	
+	
 	{
 		next: function () {
 			this.branch = drawBranch('my-branch', 1);
@@ -174,6 +193,9 @@ var frames = [
 			this.branch.remove();
 		}
 	},
+
+	terminalFrame,
+
 
 	{
 		next: function () {
