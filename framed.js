@@ -42,6 +42,10 @@ var frameIndex = 0;
 
 var paper;	
 var arrows = [];
+var houses = {};
+var branches = {};
+
+var upArrow = null;
 	
 var drawBranch = function (name, row) {
 	var branch = paper.set();
@@ -58,6 +62,7 @@ var drawHouse = function (col, row, features) {
 		house.push( SHAPES[name]() );
 	});
 	house.translate( GRID_START_X + col * GRID_WIDTH + 0.5, 20.5 + row * 140 );
+	houses[col + ' ' + row] = house;
 	return house;
 };
 
@@ -72,12 +77,17 @@ var drawArrow = function (col, row, pointRight) {
 };
 
 var drawUpArrow = function () {
-	var arrow = paper.path( ['M0 5', 'L30 5', 'L25 0', 'M25 10', 'L30 5'].join("") ).translate(0, 50);
+	var arrow = upArrow = paper.path( ['M0 5', 'L30 5', 'L25 0', 'M25 10', 'L30 5'].join("") ).translate(0, 50);
 	arrow.rotate(270);
 	arrow.translate( 380.5, 80.5 );
 	return arrow;
 };
 
+var drawDiagonalArrow = function () {
+	var arrow = paper.path( ['M395 105', 'L395 90', 'L675 90', 'L675 75', 'L670 80', 'M675 75', 'L680 80'].join("") ).translate(0, 50);
+	arrow.translate(0.5, 0.5);
+	return arrow;
+};
 
 
 var terminalFrame = {
@@ -168,8 +178,6 @@ var frames = [
 		}
 	},
 
-	terminalFrame,
-	
 	{
 		next: function () {
 			this.branch = drawBranch('master', 0);
@@ -181,7 +189,7 @@ var frames = [
 	},
 	
 	terminalFrame,
-	terminalFrame,
+
 	
 	
 	{
@@ -195,7 +203,7 @@ var frames = [
 	},
 
 	terminalFrame,
-
+	terminalFrame,
 
 	{
 		next: function () {
@@ -209,6 +217,11 @@ var frames = [
 		}
 	},
 	
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	
+	
 	{
 		next: function () {
 			this.arrow = drawArrow(3, 1);
@@ -220,6 +233,12 @@ var frames = [
 			this.house.remove();
 		}
 	},
+	
+	
+	terminalFrame,
+	terminalFrame,
+
+	
 	
 	{
 		next: function () {
@@ -233,6 +252,11 @@ var frames = [
 		}
 	},
 	
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	
 	{
 		next: function () {
 			this.arrow = drawArrow(3, 0);
@@ -244,6 +268,9 @@ var frames = [
 			this.house.remove();	
 		}
 	},
+	
+	terminalFrame,
+	terminalFrame,
 
 	{
 		next: function () {
@@ -255,7 +282,86 @@ var frames = [
 			this.arrow.remove();
 			this.house.remove();
 		}
-	}
+	},
+	
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	
+	{
+		next: function () {
+			upArrow.remove();
+			this.arrow = drawDiagonalArrow();
+		},
+		
+		prev: function () {
+			this.arrow.remove();
+			drawUpArrow();
+		}
+	},
+	
+	{
+		next: function () {
+			houses['2 1'].remove();
+			drawHouse(2,1, 'walls siding brick door window roof');
+			houses['3 1'].remove();
+			drawHouse(3,1, 'walls siding brick door color window roof');
+			houses['4 1'].remove();
+			drawHouse(4,1, 'walls siding brick door color window chimney roof');
+		},
+		
+		prev: function () {
+			this.arrow.remove();
+			drawUpArrow();
+		}
+	},
+	
+	
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	
+	{
+		next: function () {
+			houses['2 1'].remove();
+			drawHouse(2,1, 'walls siding brick door window roof');
+			houses['3 1'].remove();
+			drawHouse(3,1, 'walls siding brick door color window roof');
+			houses['4 1'].remove();
+			drawHouse(4,1, 'walls siding brick door color window chimney roof');
+		},
+		
+		prev: function () {
+			this.arrow.remove();
+			drawUpArrow();
+		}
+	},
+	
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	terminalFrame
+	
 ];
 
 $(function () {
