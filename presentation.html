@@ -121,94 +121,71 @@ Date:   Wed Mar 9 10:51:20 2011 -0500
    First commit. The house has walls.</samp>
 
 
-	! We switch to a new branch.
-	= my-branch
-	- git checkout -b my-branch
-	- Switched to a new branch 'my-branch'
+<kbd>git checkout -b my-branch</kbd>
 
-	! Now let's add some code on this branch and commit it.
-	- git commit -a -m "Added a window"
+<samp>Switched to a new branch 'my-branch'</samp>
 
-	! Let's give it some color.
-	- git commit -a 
+<kbd>git commit -a -m "Added a window"</kbd>
 
-	! What did I do wrong? I forgot the commit message.
-	! If you don't type a commit message, an editor will pop up so you can type it.
-	- (screenshot of TextMate)
+<samp>(output of commit)</samp>
 
-	! When you're done, just close the editor.
-	- (output of commit)
+<kbd>git commit -a</kbd>
 
-	! One last commit on this branch
-	= chimney
-	- git commit -a -m "I've always wanted a real fireplace."
-	- result of git commit
+<ins>(screenshot of TextMate)</ins>
 
-	! Now let's check out the master branch again.
-	- git checkout master
-	- (output of checkout)
+<kbd>(output of commit)</kdb>
 
-	! We need to add vinyl siding.
-	= siding
-	- git commit -a -m "Added siding"
-	- output of commit
+<kbd>git commit -a -m "I've always wanted a real fireplace."</kbd>
+<samp>result of git commit</samp>
 
-	! Actually, make that brick
-	= brick
-	- git commit -a -m "Changed siding to brick"
-	- output of commit
+<kbd>git checkout master</kbd>
+<samp>(output of checkout)</samp>
 
-	! Now, if we look at the log, we'll only see changes that are on master
-	- git log
-	- (ouptut of log)
+<kbd>git commit -a -m "Added siding"</kbd>
+<samp>output of commit</samp>
 
-	! We're ready to land the window, etc., on the master branch. To do that,
-	! we'll first switch back to the branch.
-	- git checkout my-branch
-	- (output of git checkout branch)
+<kbd>git commit -a -m "Changed siding to brick"</kbd>
+<samp>output of commit</samp>
 
-	! Now, we rebase the branch onto master. That means we take all of these
-	! changes and pretend like they happened after the last change on master.
-	= move arrow to point back
-	- git rebase master
 
-	= change so that bricks are pushed into the new branch
-	- (output of git rebase)
+<kbd>git log</kbd>
+<samp>(ouptut of log)</samp>
 
-	! Now all of the commits are in one continuous line. We can merge onto 
-	! master and it will be a fast-forward merge. That's a good thing!
-	! First we check out master.
-	- git checkout master
-	- (output of master)
 
-	! Then we merge my-branch onto master
-	- git merge my-branch
-	- (output of merge)
-	= changes copied up into master
+<kbd>git checkout my-branch</kbd>
+<samp>(output of git checkout branch)</samp>
 
-	! Now we can delete the branch
-	- git branch -d my-branch
+<kbd>git rebase master</kbd>
+<samp>output of git rebase master</samp>
 
-	= branch is removed
-	- (output of delete)
 
-	! Some more things I didn't cover:
-	! - show
-	! - git checkout <commit>
-	! - git checkout HEAD^ 
-	! - git checkout HEAD~1
-	! - git log HEAD~5
-	! - git log origin/master
-	! - git log since="2 days"
-	! - git log HEAD~20..HEAD^^
-	! - git blame
-	! - git blame | mate
-	! - git tag
-	! - git rebase -i
-	! - git stash
-	! - git stash apply
-	! - git show <revision>
-	! - git help
+<kbd>git checkout master</kbd>
+<samp>output of git checkout master</samp>
+
+<kbd>git merge my-branch</kbd>
+<samp>(output of merge)</samp>
+
+
+<kbd>- git branch -d my-branch</kbd>
+<samp>(output of delete)</samp>
+
+<kbd>git show</kbd>
+<kbd>git checkout d2e31a914028ad734f957d88a92945a6b5d0c0d0</kbd>
+<kbd>git checkout d2e31a</kbd>
+<kbd>git checkout HEAD^ </kbd>
+<kbd>git checkout HEAD~1</kbd>
+<kbd>git log HEAD~5</kbd>
+<kbd>git log origin/master</kbd>
+<kbd>git log since="2 days"</kbd>
+<kbd>git log HEAD~20..HEAD^^</kbd>
+<kbd>git blame</kbd>
+<kbd>git blame | mate</kbd>
+<kbd>git tag</kbd>
+<kbd>git rebase -i</kbd>
+<kbd>git stash</kbd>
+<kbd>git stash apply</kbd>
+<kbd>git show d2e31a</kbd>
+<kbd>git help</kbd>
 
 
 
