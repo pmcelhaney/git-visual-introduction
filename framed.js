@@ -103,11 +103,33 @@ var drawDiagonalArrow = function () {
 
 var terminalFrame = {
 	next: function () {
+		var nextOutput = $('#terminal *:hidden:first');
+		var text = nextOutput.text();
+		
+		if ( nextOutput.is('kbd') ) {
+			nextOutput.text('');
+		}
+					
 		$('#terminal *:hidden:first').css('display', 'block');
+		
+		if ( nextOutput.is('kbd') ) {
+			nextOutput.text(text);
+		}
+		
+		this.showOrHidePrompt();
 		$('#terminal').scrollTop( $('#terminal')[0].scrollHeight );
 	},
 	prev: function () {
 		$('#terminal *:visible:last').css('display', 'none');
+		this.showOrHidePrompt();
+	},
+	
+	showOrHidePrompt: function () {
+		if ( $('#terminal *:hidden:first').is('kbd') ) {
+			$('#prompt').css('display', 'block'); 
+		} else {
+			$('#prompt').css('display', 'none'); 
+		}
 	}
 };
 	
