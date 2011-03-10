@@ -79,8 +79,27 @@ var drawUpArrow = function () {
 };
 
 
+
+var terminalFrame = {
+	next: function () {
+	    var obj = $('#terminal *:hidden:first').css('display', 'block');
+		$('#terminal').scrollTop(obj.position().top);
+	},
+	prev: function () {
+		$('#terminal *:visible:last').css('display', 'none');
+	}
+};
 	
 var frames = [
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	
 	{
 		next: function () {
 			this.house = drawHouse(0, 0, 'walls');
@@ -89,6 +108,16 @@ var frames = [
 			this.house.remove();
 		}
 	},
+	
+	
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+	terminalFrame,
+
+
 	
 	{
 		next: function () {

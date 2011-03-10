@@ -32,10 +32,9 @@
 			margin: 0 auto;
 			background-color: black;
 			color: #eee;
-			overflow: scroll;
+			overflow: auto;
 			border: 1px solid auto;
 			font-family: monospace;
-			white-space: pre;
 		}
 		
 		#terminal kbd:before {
@@ -51,6 +50,13 @@
 			display: block;
 			border-top: 1px dashed white;
 			border-bottom: 1px dashed white;
+		}
+		
+		#terminal kbd, #terminal samp, #terminal ins {
+			display: none;
+			white-space: pre;
+			clear: both;
+			margin-top: 1em;
 		}
 		
 	</style>
@@ -189,7 +195,7 @@ Date:   Wed Mar 9 10:51:20 2011 -0500
 
 
 
-$ <span style="background-color: #666">&nbsp;</span>
+<kbd id="prompt"><span style="background-color: #666">&nbsp;</span></kbd>
 
 </div>
 </body>
