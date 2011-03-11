@@ -110,7 +110,7 @@ var terminalFrame = {
 			nextOutput.text('');
 		}
 					
-		$('#terminal > *:hidden:not(#prompt):first').addClass('revealed');
+		$('#terminal > *:hidden:not(#prompt):not(p):first').addClass('revealed');
 		
 		if ( nextOutput.is('kbd') ) {
 			nextOutput.text(text);
@@ -120,7 +120,7 @@ var terminalFrame = {
 		$('#terminal').scrollTop( $('#terminal')[0].scrollHeight );
 	},
 	prev: function () {
-		$('#terminal > *:not(#prompt):visible:last').removeClass('revealed');
+		$('#terminal > *:not(#prompt):not(p):visible:last').removeClass('revealed');
 		this.showOrHidePrompt();
 	},
 	

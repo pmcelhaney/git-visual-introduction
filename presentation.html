@@ -24,7 +24,15 @@ The other is to go to a directory and type git init.</p>
 <kbd id="git-init">git init</kbd> <samp id="git-init-output">Initialized empty
 Git repository in /Users/Ally/www/out-house/.git/</samp>
 
+<p>As you can see, that creates a directory called .git in the root of your project. If you've
+worked with Subversion, you may know that it puts .svn files in every directory it knows about. 
+One nice thing about Git is it only puts that directory in the root.</p>
+
+<p>Let's get to work and create a file so we can add it to our repo.</p>
+
 <ins id="edit-create-house-css">(create a file called house.css)</ins>
+
+<p>Now if we check the status...</p>
 
 <kbd id="git-status">git status</kbd>
 
@@ -38,10 +46,16 @@ Git repository in /Users/Ally/www/out-house/.git/</samp>
 #	house.css
 nothing added to commit but untracked files present (use "git add" to track)</samp>
 
+<p>We can see that git recognizes a file has been added to the directory, but 
+it's not going to do anything with that file until we put it in the staging area.</p>
+
 
 <kbd>git add house.css</kbd>
 
 <samp></samp>
+
+<p>After adding the file, we can commit, which will add it to the repository. When you
+commit, you must supply a message stating what's been changed.</p>
 
 <kbd>git commit -m "First commit. The house has walls."</kbd>
 <samp>[master (root-commit) 71f2aac] First commit. The house has walls.
@@ -49,7 +63,11 @@ nothing added to commit but untracked files present (use "git add" to track)</sa
  create mode 100644 house.css
 </samp>
 
+<p>That's a good start. Now let's add a roof to the house...</p>
+
 <ins>(write code for the roof)</ins>
+
+<p>And check the status...</p>
 
 <kbd>git status</kbd>
 
@@ -61,13 +79,19 @@ nothing added to commit but untracked files present (use "git add" to track)</sa
 #
 #	modified:   house.css</samp>
 
+<p>Now git is tracking the file, but the changes we just made haven't been staged yet.</p>
+
 <kbd>git add house.css</kbd>
+
+<p>Now that the changes have been added to the staging area, we can commit.</p>
 
 <kbd>git commit -m "Added a roof"</kbd>
 
 <samp>[master 71f2aacb] Added a roof
  1 files changed, 22 insertions(+), 1 deletions(-)</samp>
 
+	
+<p>Let's do some more edits and commit again.</p>	
 	
 <ins>(create door.css, edit house.css to @import door.css)</ins>
 
@@ -76,6 +100,13 @@ nothing added to commit but untracked files present (use "git add" to track)</sa
 <samp>[master a0663e2] Added a door
  2 files changed, 7 insertions(+), 1 deletions(-)
  create mode 100644 door.css</samp>
+
+<p>But wait! We didn't add the changes to the staging area. The <code>-a</code> adds any 
+changes that are outstanding before committing, saving a step. Technically, in this case,
+we should have added door.css first, because <code>-a</code> doesn't include files that
+git doesn't know about. (Log it as a defect, and we'll fix it in a fast-follower. ;-))</p> 
+
+<p>We can use git log to see a summary of the changes that have been committed to this point.</p>
 
 <kbd>git log</kbd> 
 
@@ -98,10 +129,23 @@ Date:   Thu Mar 10 16:12:50 2011 -0500
     First commit. The house has walls.
 </samp>
 
+<p>One thing that's helped me understand how git (and other DVCSs) works is to think of each
+commit pointing to its predecessor. <em>Git can't tell you where you're going, but it can 
+tell you where it's been.</em></p>
+
+<p>Now let's talk about branching. When you create a new repository, a default branch, called
+master, is created.</p>
+
+<p>We can fork off a new branch. The syntax is kind of weird but it doesn't take long to
+memorize.</p>
+
 
 <kbd>git checkout -b my-branch</kbd>
 
 <samp>Switched to a new branch 'my-branch'</samp>
+
+<p>Now let's add some more features. I'm going to skip over the editing from this point and
+get right to the committing.</p>
 
 <kbd>git commit -a -m "Added a window"</kbd>
 
@@ -109,7 +153,13 @@ Date:   Thu Mar 10 16:12:50 2011 -0500
  1 files changed, 1 insertions(+), 0 deletions(-)
 </samp>
 
+<p>That door could use a splash of paint. Let's change that.</p>
+
 <kbd>git commit -a</kbd>
+
+<p>Wait, what about the commit message? If you don't specify one in the command line, 
+git will open up your favorite editor and let you type it in there. It also provides
+some instructions and details about what changed, which is nice.</p>
 
 <ins><h3>(opens your favorite editor)</h3>
 	
@@ -122,17 +172,26 @@ Date:   Thu Mar 10 16:12:50 2011 -0500
 #	modified:   house.css
 #</ins>
 
+<p>Type a commit message, save and close to continue.</p>
+
 <samp>[my-branch d6c3476] A splash of paint on the door.
  1 files changed, 1 insertions(+), 0 deletions(-)
 </samp>
+
+<p>Let's do one more commit on this branch.</p>
 
 <kbd>git commit -a -m "I've always wanted a real fireplace."</kbd>
 <samp>[my-branch 07b14dd] I've always wanted a real fireplace.
  2 files changed, 7 insertions(+), 0 deletions(-)
 </samp>
 
+<p>Now let's go back to the master branch.</p>
+
 <kbd>git checkout master</kbd>
 <samp>Switched to branch 'master'</samp>
+
+<p>And we'll commit a couple of changes on master. In the real world, this is quite a common
+workflow. You start a branch, go add some features, and then go back to master.</p>
 
 <kbd>git commit -a -m "Added siding"</kbd>
 <samp>[master 4c93a6a] Added siding
@@ -143,6 +202,12 @@ Date:   Thu Mar 10 16:12:50 2011 -0500
  1 files changed, 1 insertions(+), 0 deletions(-)
 </samp>
 
+<p>Except, unless you're doing a quick bug fix, you're probably not going to make changes on
+master while you still have a branch hanging out there. More likely you'll be pulling in changes
+that others have pushed since you checkout out the branch.</p>
+
+<p>If we check the log at this point, we'll only see the changes that were made on master, and 
+none of the changes that were made while we were on the other branch.</p>
 
 <kbd>git log</kbd>
 <samp>commit 147c7c2ff743cb8f99d017c723e6a29fb1b3b8d7
@@ -169,9 +234,19 @@ Date:   Thu Mar 10 16:18:52 2011 -0500
 
     Added a roof</samp>
 
+<p>Now let's pull it all together: the new changes on master, and the changes that were made on
+the branch.</p>
+
+<p>First, we'll check out the branch again. It's a good practice to get everything working on a
+branch, and then ship the whole thing up to master. That way master is always stable, only 
+containing work that's "ready for primetime."</p>
 
 <kbd>git checkout my-branch</kbd>
 <samp>Switched to branch 'my-branch'</samp>
+
+<p>Remember how I said each commit points to its predecessor? The first commit on this branch is based on 
+the third commit on master. If we <em>rebase</em> it to point to the latest commit on master, all of the
+changes on master will cascade down through the branch.</p>
 
 <kbd>git rebase master</kbd>
 <samp>First, rewinding head to replay your work on top of it...
@@ -180,9 +255,21 @@ Applying: A splash of paint on the door.
 Applying: I've always wanted a real fireplace.
 </samp>
 
+<p>Another useful metaphor is to think of it like you're cutting a movie. Luke is shown in the
+garbage compactor with a piece of garbage on his head. But you decide that looks silly, so you 
+rewind to point where he's first shown in the garbage compactor and insert a scene in which he 
+removes the garbage. Then you re-film the rest of the sequence without the garbage hat.</p> 
+
+<p>Sorry about the lame metaphor. Anyway, we now have a house complete with brick, fireplace,
+etc. on my-branch. It looks good, so we want to send the whole thing over to master.</p>
+
+<p>First checkout master.</p>
 
 <kbd>git checkout master</kbd>
 <samp>Switched to branch 'master'</samp>
+
+<p>Now we can merge my-branch onto master. If you only remember one thing, let it be this:
+<strong>rebase down to branches, merge up to master</strong>.
 
 <kbd>git merge my-branch</kbd>
 <samp>Fast-forward
@@ -190,9 +277,12 @@ Applying: I've always wanted a real fireplace.
  1 files changed, 2 insertions(+), 0 deletions(-)
 </samp>
 
+<p>And now that everything is on master, we can dispense with the branch.</p>
 
 <kbd>git branch -d my-branch</kbd>
 <samp>Deleted branch my-branch (was 05d9b14).</samp>
+
+<p>And that's it! Here are some more useful commands to play around with.</p>
 
 <kbd>git show</kbd>
 <kbd>git checkout d2e31a914028ad734f957d88a92945a6b5d0c0d0</kbd>
