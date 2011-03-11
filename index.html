@@ -33,11 +33,16 @@
 	pager = true
 [alias]
 	todo = !python <a href="http://stevelosh.com/projects/t/" title="t.py script by Steve Losh">/usr/bin/t/t.py</a> --task-dir $(git rev-parse --show-toplevel) --list todo
-
-[commit]
-	template = ~/config/git-commit-message.txt
-
 	</pre>
+	
+	<h2>Git-aware Prompt: Add this to your ~/.bash_profile</h2>
+	<pre>
+export GIT_PS1_SHOWDIRTYSTATE=true
+export GIT_PS1_SHOWUNTRACKEDFILES=true
+PS1='\n\w$(__git_ps1 " (%s)")\n$ '
+	</pre>		
+	
+	
 	
 	<h2>More Places to Learn about Git</h2>
 	
@@ -49,6 +54,11 @@
 		<li><a href="http://www.kernel.org/pub/software/scm/git/docs/gittutorial.html">Official Git Tutorial</a></li>
 	</ul>
 	
+	<h2>Git Blame</h2>
+	<cite>
+	<a href="mailto:pmcelhaney@gmail.com">Patrick McElhaney</a><br>
+	Ally | Senior Web Presentation Architect  
+	</cite>
 
 </body>
 </html>
