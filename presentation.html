@@ -2,6 +2,7 @@
 
 <html lang="en">
 <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Git Presentation</title>
 	<script src="lib/jquery-1.4.2.js" type="text/javascript" charset="utf-8"></script>
 	<script src="lib/raphael/raphael.js" type="text/javascript" charset="utf-8"></script>
@@ -74,8 +75,8 @@ commit, you must supply a message stating what's been changed.</p>
 <samp># On branch master
 # On branch master
 # Changed but not updated:
-#   (use "git add <file>..." to update what will be committed)
-#   (use "git checkout -- <file>..." to discard changes in working directory)
+#   (use "git add &lt;file&gt;..." to update what will be committed)
+#   (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
 #
 #	modified:   house.css</samp>
 
@@ -167,7 +168,7 @@ some instructions and details about what changed, which is nice.</p>
 # with '#' will be ignored, and an empty message aborts the commit.
 # On branch my-branch
 # Changes to be committed:
-#   (use "git reset HEAD <file>..." to unstage)
+#   (use "git reset HEAD &lt;file&gt;..." to unstage)
 #
 #	modified:   house.css
 #</ins>
@@ -269,7 +270,7 @@ etc. on my-branch. It looks good, so we want to send the whole thing over to mas
 <samp>Switched to branch 'master'</samp>
 
 <p>Now we can merge my-branch onto master. If you only remember one thing, let it be this:
-<strong>rebase down to branches, merge up to master</strong>.
+<strong>rebase down to branches, merge up to master</strong>.</p>
 
 <kbd>git merge my-branch</kbd>
 <samp>Fast-forward
