@@ -1,0 +1,37 @@
+body {
+	background-color: yellow;
+}
+
+h2 {
+	display: none;
+}
+
+#canvas {
+	display: none;
+}
+
+#terminal kbd, #terminal samp, #terminal ins {
+	white-space: pre;
+	clear: both;
+	margin: 1em 0 0 0;
+	clear: both;
+	page-break-inside: avoid;
+	display: block;
+}
+
+#terminal kbd {
+	font-weight: bold;
+}
+
+#terminal kbd:before {
+	content: "$ ";
+}
+
+#terminal ins {
+	font-family: serif;
+	font-style: italic;
+	text-decoration: none;
+	margin: 10px;
+	padding: 10px;
+}
+
