@@ -6,7 +6,49 @@
 	<script src="lib/jquery-1.4.2.js" type="text/javascript" charset="utf-8"></script>
 	<script src="lib/raphael/raphael.js" type="text/javascript" charset="utf-8"></script>
 	<script src="framed.js" type="text/javascript" charset="utf-8"></script>
+	<style type="text/css" media="print">
+		
+		h2 {
+			display: none;
+		}
+		
+		#canvas {
+			display: none;
+		}
+		
+		#terminal kbd, #terminal samp, #terminal ins {
+			white-space: pre;
+			clear: both;
+			margin: 1em 0 0 0;
+			clear: both;
+			page-break-inside: avoid;
+			display: block;
+		}
+		
+		#terminal kbd {
+			font-weight: bold;
+		}
+		
+		#terminal kbd:before {
+			content: "$ ";
+		}
+		
+		#terminal ins {
+			font-family: serif;
+			font-style: italic;
+			text-decoration: none;
+			margin: 10px;
+			padding: 10px;
+		}
+		
+		
+	</style>
 	<style type="text/css" media="screen">
+		h1, h2 {
+			position: absolute;
+			text-indent: -10000px;
+		}
+	
 		#canvas {
 			width: 800px;
 			height: 300px;
@@ -63,18 +105,21 @@
 		#terminal samp {
 			color: #b8cdde;
 		}
+		
+		#terminal .revealed {
+			display: block;
+		}
 	
 		
 	</style>
 </head>
 <body>
 
+<h1>Git Presentation</h1>
 
-<div id="canvas"></div>
 
-
-<div id="title-bar"></div>
-<div id="terminal">
+<h2>Terminal</h2>
+<section id="terminal">
 
 <kbd id="git-init">git init</kbd>
 <samp id="git-init-output">Initialized empty Git repository in /Users/Ally/www/out-house/.git/</samp>	
@@ -271,6 +316,11 @@ Applying: I've always wanted a real fireplace.
 
 <kbd id="prompt"><span style="background-color: #666">&nbsp;</span></kbd>
 
-</div>
+</section>
+
+<h2>Visual Demonstration</h2>
+<aside id="canvas"></aside>
+
+
 </body>
 </html>

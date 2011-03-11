@@ -110,7 +110,7 @@ var terminalFrame = {
 			nextOutput.text('');
 		}
 					
-		$('#terminal > *:hidden:not(#prompt):first').css('display', 'block');
+		$('#terminal > *:hidden:not(#prompt):first').addClass('revealed');
 		
 		if ( nextOutput.is('kbd') ) {
 			nextOutput.text(text);
@@ -120,15 +120,15 @@ var terminalFrame = {
 		$('#terminal').scrollTop( $('#terminal')[0].scrollHeight );
 	},
 	prev: function () {
-		$('#terminal > *:not(#prompt):visible:last').css('display', 'none');
+		$('#terminal > *:not(#prompt):visible:last').removeClass('revealed');
 		this.showOrHidePrompt();
 	},
 	
 	showOrHidePrompt: function () {
 		if ( $('#terminal *:hidden:first').is('kbd') ) {
-			$('#prompt').css('display', 'block'); 
+			$('#prompt').addClass('revealed');
 		} else {
-			$('#prompt').css('display', 'none'); 
+			$('#prompt').removeClass('revealed'); 
 		}
 	}
 };
