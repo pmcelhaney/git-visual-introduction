@@ -110,7 +110,7 @@ var terminalFrame = {
 			nextOutput.text('');
 		}
 					
-		$('#terminal *:hidden:not(#prompt):first').css('display', 'block');
+		$('#terminal > *:hidden:not(#prompt):first').css('display', 'block');
 		
 		if ( nextOutput.is('kbd') ) {
 			nextOutput.text(text);
@@ -120,7 +120,7 @@ var terminalFrame = {
 		$('#terminal').scrollTop( $('#terminal')[0].scrollHeight );
 	},
 	prev: function () {
-		$('#terminal *:not(#prompt):visible:last').css('display', 'none');
+		$('#terminal > *:not(#prompt):visible:last').css('display', 'none');
 		this.showOrHidePrompt();
 	},
 	
